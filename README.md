@@ -1,2 +1,14 @@
 # REST API
-Using technology: Java 8, Spring, Spring Boot, Hibernate, MySQL, JavaScript, JSON, AJAX, HTML5, CSS
+
+<b>Technologies:</b>
+- Java 1.8, 
+- Spring,
+- Spring Boot,
+- Hibernate,
+- MySQL,
+- JavaScript,
+- JSON,
+- AJAX,
+- HTML5,
+- CSS,
+- Maven.
