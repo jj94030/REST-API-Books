@@ -15,7 +15,6 @@ public class BookApplication {
 		SpringApplication.run(BookApplication.class, args);
 	}
 	
-	
 	@Bean
     public WebMvcConfigurer corsConfigurer() {
         return new WebMvcConfigurerAdapter() {
@@ -34,7 +33,4 @@ public class BookApplication {
 		registrationBean.setOrder(1);
 		return registrationBean;
 	}
-	
-	
-	
 }
