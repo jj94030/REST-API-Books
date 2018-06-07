@@ -20,37 +20,32 @@ import com.example.book.repository.BookRepository;
 public class BookController {
 
 	@Autowired
-	//BookService bookService;
 	BookRepository bookRepo;
+	
 	@RequestMapping("/hello")
 	public String hello() {
-		return "asdfasdf";
+		return "Hello REST API";
 	}
 
 	@GetMapping("/")
 	public List<Book> getBookList() {
-		//return bookService.getList();
 		return bookRepo.findAll();
 	}
 	
 	@GetMapping("/{id}")
 	public Optional<Book> getBookById(@PathVariable long id){
-		//return bookService.getById(id);
 		return bookRepo.findById(id);
 		
 	}
 	
 	@PostMapping("/")
 	public Book addBook(@RequestBody Book book){
-		//bookService.addBook(book);
 		bookRepo.save(book);
 		return new Book();
 	}
 	
 	@DeleteMapping("/{id}")
 	public String deleteBook(@PathVariable long id){
-		//Book book = bookService.getById(id);
-		//bookService.deleteBook(book);
 		Book book = bookRepo.getOne(id);
 		bookRepo.delete(book);
 		return "Delete completed";
