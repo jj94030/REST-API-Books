@@ -6,4 +6,5 @@ import com.example.book.entity.Book;
 
 public interface BookRepository extends JpaRepository<Book, Long>{
 
+	Book findOneById(long id);
 }
