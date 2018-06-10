@@ -1,13 +1,13 @@
 package com.example.book.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -33,8 +33,8 @@ public class BookController {
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Book> getBookById(@PathVariable long id){
-		return bookRepo.findById(id);
+	public Book getBookById(@PathVariable long id){
+		return bookRepo.findOneById(id);
 		
 	}
 	
@@ -46,9 +46,19 @@ public class BookController {
 	
 	@DeleteMapping("/{id}")
 	public String deleteBook(@PathVariable long id){
-		Book book = bookRepo.getOne(id);
+		Book book = bookRepo.findOneById(id);
 		bookRepo.delete(book);
 		return "Delete completed";
+	}
+	
+	@PutMapping("/{id}")
+	public Book editBook(@PathVariable long id, @RequestBody Book editedBook) {
+		Book book = bookRepo.findOneById(id);
+		book.setTitle(editedBook.getTitle());
+		book.setAuthor(editedBook.getAuthor());
+		book.setIsbn(editedBook.getIsbn());
+		bookRepo.save(book);
+		return new Book();	
 	}
 
 }
